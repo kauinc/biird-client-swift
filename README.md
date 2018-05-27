@@ -2,25 +2,17 @@ Swift client for the biird Api service.
 
 Download the biird swift library from here:
 
-https://github.com/biirdio/client-js/blob/master/biird.js
+https://github.com/biirdio/client-swift/blob/master/biird.swift
 
-Set up your HTML markup.
-
+To change any dimension pass a dictionary to the shared Biird object.
 <pre>
-&#60;div class="biird" data-biird-id="b9fb0f44-31d5-45df-9ec3-776568802c31"&#62;&#60;/div&#62;
+Biird.shared.defaultDimensions =  [language: "en", gender: "male"]
 </pre>
 
-Add the library to the end of your Body tag. biird will automatically initialize on load.
+Call Fetch to retrieve the values.
 
 <pre>
-<script type="text/javascript" src="biird/biird.min.js"></script>
-</pre>
-
-To change any dimension call the Update function and pass the optios as a JSON string. Call the Refresh function right after to update the resources with the new dimensions.
-
-<pre>
-$(function() {
-    biird.update({'language': 'en'});
-    biird.refresh();
-});
+Biird.shared.fetch(withId: "64b5e1fa-2891-4038-9ac1-b5adbc254846") { 
+    (result) in self.imageView.image = result?.image
+}
 </pre>
